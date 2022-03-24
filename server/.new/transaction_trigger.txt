@@ -1,0 +1,8 @@
+CREATE TRIGGER `update_paymentStatus` BEFORE UPDATE ON `transactions`
+ FOR EACH ROW SET NEW.paymentStatus = IF(DATEDIFF(NEW.overDate, NOW()) <= 0, "Pending", "Approve")
+
+CREATE TRIGGER `update_remainActive` BEFORE UPDATE ON `transactions`
+ FOR EACH ROW SET NEW.remainActive = IF(DATEDIFF(NEW.overDate, NOW()) <= 0, 0, DATEDIFF(NEW.overDate, NOW()))
+
+CREATE TRIGGER `update_userStatus` BEFORE UPDATE ON `transactions`
+ FOR EACH ROW SET NEW.userStatus = IF(DATEDIFF(NEW.overDate, NOW()) <= 0, "Not Active", "Active")
