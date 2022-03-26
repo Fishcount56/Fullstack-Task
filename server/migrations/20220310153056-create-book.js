@@ -29,9 +29,6 @@ module.exports = {
       bookFile: {
         type: Sequelize.STRING
       },
-      bookCover: {
-        type: Sequelize.STRING
-      },
       createdAt: {
         allowNull: false,
         defaultValue: Sequelize.fn('now'),

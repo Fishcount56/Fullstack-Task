@@ -33,7 +33,7 @@ router.get('/book/:id', getBook)
 router.patch('/book/:id',auth, updateBook)
 router.delete('/book/:id', auth, deleteBook)
 // router.post('/book', auth, addBook)
-router.post('/book', auth, uploadEpub('bookFile','coverFile'), addBook)
+router.post('/book', auth, uploadEpub('bookFile'), addBook)
 
 
 // Routing for profile

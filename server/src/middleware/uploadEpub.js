@@ -1,7 +1,6 @@
 const multer = require('multer')
 
-exports.uploadEpub = (epubFile, coverFile) => {
-    console.log(epubFile)
+exports.uploadEpub = (epubFile) => {
     const storage = multer.diskStorage({
         destination: function (req, file, cb) {
             cb(null, "uploads")
@@ -20,14 +19,6 @@ exports.uploadEpub = (epubFile, coverFile) => {
                 return cb(new Error("Only epub file are allowed!"), false)
             }
         }
-        if (file.fieldname === coverFile) {
-            if(!file.originalname.match(/\.(PNG|png|JPEG|jpeg|JPG|jpeg)$/)) {
-                req.fileValidationError = {
-                    message: "Only epub file are allowed!"
-                }
-                return cb(new Error("Only epub file are allowed!"), false)
-            }
-        }
         cb(null, true)
     }
 
@@ -37,7 +28,7 @@ exports.uploadEpub = (epubFile, coverFile) => {
     const upload = multer({
         storage,
         fileFilter,
-    }).fields([{name: epubFile, maxCount: 1},{name: coverFile, maxCount: 1}])
+    }).single(epubFile)
 
     return(req, res, next) => {
         upload(req, res, function(err) {

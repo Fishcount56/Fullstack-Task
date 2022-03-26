@@ -68,8 +68,7 @@ exports.addBook = async (req, res) => {
 
         const newBook = await book.create({
             ...data,
-            bookFile: req.file,
-            coverFile: req.file
+            bookFile: req.file.filename
         })
         // console.log(newBook)
         let bookData = await book.findOne({

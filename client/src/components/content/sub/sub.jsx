@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Component } from "react";
-import styleCSS from "./unsub.module.css"
+import styleCSS from "./sub.module.css"
 import book5 from "../../../assets/book5.png"
 import book1 from "../../../assets/book1.png"
 import book2 from "../../../assets/book2.png"
@@ -10,7 +10,7 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 import { Modal } from "react-bootstrap";
 import { API } from "../../../config/api";
 
-const UnSubContent = () => {
+const SubContent = () => {
     const [showNotification, setshowNotification] = useState(false)
     const closeNotification = () => {
         setshowNotification(!showNotification)
@@ -30,8 +30,6 @@ const UnSubContent = () => {
     useEffect(() => {
         getBook()
     }, [])
-
-    console.log(book)
     return (
         <div>
             <div className={styleCSS.firstSection}>
@@ -47,7 +45,7 @@ const UnSubContent = () => {
                 <div className={styleCSS.bookList}>
                     {book.map((item, index) => (
                         <div className={styleCSS.bookSection}>
-                            <img onClick={() => setshowNotification(!showNotification)} src={book1} />
+                            <img src={book1} />
                             <p className={styleCSS.bookTitle}>{item.title}</p>
                             <p className={styleCSS.bookAuthor}>{item.author}</p>
                         </div>
@@ -69,4 +67,4 @@ const UnSubContent = () => {
     )
 }
 
-export default UnSubContent
+export default SubContent

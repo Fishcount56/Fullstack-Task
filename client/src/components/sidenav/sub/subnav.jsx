@@ -22,6 +22,10 @@ const SubNav = () => {
         navigate("/");
     };
     
+    const backtohome = () => {
+        navigate('/dashboard')
+    }
+
     const [profile, setProfile] = useState({})
     let id = state.user.id
     const getProfile = async (id) => {
@@ -42,7 +46,7 @@ const SubNav = () => {
             <div className="unsub-content-parent">
                 <div className={styleModule.contentchild}>
                     <div className={styleModule.navicon}>
-                        <img src={iconsm} />
+                        <img onClick={backtohome} src={iconsm} />
                     </div>
                     <div className={styleModule.displayprofile}>
                         <img src={profile?.userPhoto ? profile?.userPhoto : defaultuser} />
