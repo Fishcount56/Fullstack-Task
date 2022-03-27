@@ -3,7 +3,7 @@ const multer = require('multer')
 exports.uploadEpub = (epubFile) => {
     const storage = multer.diskStorage({
         destination: function (req, file, cb) {
-            cb(null, "uploads")
+            cb(null, "uploads/epub")
         },
         filename: function (req, file, cb) {
             cb(null, Date.now() + '-' + file.originalname.replace(/\s/g, ""))

@@ -9,7 +9,7 @@ const { userProfile, editProfile } = require('../controllers/profile')
 const { uploadEpub } = require('../middleware/uploadEpub')
 const { uploadImage } = require('../middleware/uploadImage')
 const { uploadPhoto } = require('../middleware/uploadPhoto')
-
+const { addBookList, UserBookList} = require('../controllers/booklist')
 
 // Register and Login
 router.post('/register', register)
@@ -39,5 +39,9 @@ router.post('/book', auth, uploadEpub('bookFile'), addBook)
 // Routing for profile
 router.get('/profile', auth, userProfile)
 router.patch('/editprofile', auth, uploadPhoto('userPhoto'), editProfile)
+
+// Routing for booklist
+router.get('/booklists', auth, UserBookList)
+router.post('/booklist/:id', auth, addBookList)
 
 module.exports = router
