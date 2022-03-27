@@ -12,8 +12,8 @@ import { useNavigate } from "react-router-dom";
 
 const ViewBook = () => {
     const navigate = useNavigate()
-    const gotoread = () => {
-        navigate('/readbook')
+    const gotoread = (bid) => {
+        navigate('/readbook/' + bid)
     }
     const [state] = useContext(UserContext)
     let uid = state.user.id
@@ -34,6 +34,20 @@ const ViewBook = () => {
         try {
             const response = await API.get("/book/" + id)
             setDataBook(response.data.Book)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const addBookForUser = async (e) => {
+        try {
+            const config = {
+                headers: {
+                    Authorization: "Basic " + localStorage.token
+                }
+            }
+            const response = await API.post('/booklist/' + bid, config)
+            navigate('/profile')
         } catch (error) {
             console.log(error)
         }
@@ -69,8 +83,8 @@ const ViewBook = () => {
                     <p className={styleCSS.aboutthisbook}>{dataBook?.about}</p>
                 </div>
                 <div className={styleCSS.bookbuttons}>
-                    <button className="btn btn-secondary">Add book to list</button>
-                    <button className="btn btn-danger" onClick={() => gotoread()}>Read Book</button>
+                    <button className="btn btn-secondary" onClick={() => addBookForUser(dataBook?.id)}>Add book to list</button>
+                    <button className="btn btn-danger" onClick={() => gotoread(dataBook?.id)}>Read Book</button>
                 </div>
             </div>
         </div>

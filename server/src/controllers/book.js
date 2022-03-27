@@ -112,6 +112,7 @@ exports.getBook = async (req, res) => {
                 exclude: ['createdAt','updatedAt']
             }
         })
+        Book.bookFile = process.env.PATH_FILE_BOOK + Book.bookFile
         res.send({
             status: "Success",
             Book

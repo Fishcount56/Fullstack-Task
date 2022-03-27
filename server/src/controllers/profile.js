@@ -12,8 +12,6 @@ exports.userProfile = async(req, res) => {
                 exclude: ['id','createdAt','updatedAt']
             }
         })
-
-        console.log(Profile.userPhoto)
         Profile.userPhoto = process.env.PATH_FILE_USER + Profile.userPhoto
         res.send({
             status: "Success",

@@ -2,7 +2,6 @@ const { user, transaction, book, userbook} = require('../../models')
 
 exports.addBookList = async(req, res) => {
     try {
-        const { idBook } = req.params
         // Check user status first
         const CheckUserStatus = await transaction.findOne({
             where: {

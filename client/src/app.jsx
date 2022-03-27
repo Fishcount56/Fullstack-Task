@@ -71,7 +71,7 @@ const App = () => {
               <Route path='/profile' element={<UserProfile />}/>
               <Route path='/edit-profile' element={<EditProfile />}/>
               <Route path='/bookinformation/:bid' element={<ViewBook />}/>              
-              <Route path='/readbook' element={<ReadBook />}/>              
+              <Route path='/readbook/:bid' element={<ReadBook />}/>              
           </Routes>
 
     )
