@@ -8,8 +8,13 @@ import SubNav from "../sidenav/sub/subnav";
 import UnSubNav from "../sidenav/unsub/unsubnav";
 import coverbig from "../../assets/book4bg.png"
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ViewBook = () => {
+    const navigate = useNavigate()
+    const gotoread = () => {
+        navigate('/readbook')
+    }
     const [state] = useContext(UserContext)
     let uid = state.user.id
     const [status, setStatus] = useState({})
@@ -62,6 +67,10 @@ const ViewBook = () => {
                 <div className={styleCSS.booksecondsection}>
                     <p className={styleCSS.bookdescription}>About This Book</p>
                     <p className={styleCSS.aboutthisbook}>{dataBook?.about}</p>
+                </div>
+                <div className={styleCSS.bookbuttons}>
+                    <button className="btn btn-secondary">Add book to list</button>
+                    <button className="btn btn-danger" onClick={() => gotoread()}>Read Book</button>
                 </div>
             </div>
         </div>

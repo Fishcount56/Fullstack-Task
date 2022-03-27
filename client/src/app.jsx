@@ -13,6 +13,7 @@ import SubsPage from "./components/subs/subscribe";
 import UserProfile from "./components/profile/userprofile";
 import EditProfile from "./components/profile/editprofile";
 import ViewBook from "./components/book/viewbook";
+import ReadBook from "./components/readbook/readbook";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token)
@@ -70,6 +71,7 @@ const App = () => {
               <Route path='/profile' element={<UserProfile />}/>
               <Route path='/edit-profile' element={<EditProfile />}/>
               <Route path='/bookinformation/:bid' element={<ViewBook />}/>              
+              <Route path='/readbook' element={<ReadBook />}/>              
           </Routes>
 
     )

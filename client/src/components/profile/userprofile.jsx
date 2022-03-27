@@ -13,7 +13,6 @@ import maps from "../../assets/maps.png"
 import userdefault from "../../assets/user.png"
 import { useNavigate } from "react-router-dom";
 import book1 from "../../assets/book1.png"
-import UserBook from "../userbook/userbook";
 
 
 const UserProfile = () => {
@@ -119,7 +118,7 @@ const UserProfile = () => {
                         <div className={styleCSS.bookList}>
                             {Object.keys(book).map((item, index) => (
                                 <div className={styleCSS.userbooksection} key={index}>
-                                    <img src={book1} onClick={() => bookdetails(book[item].id)} />
+                                    <img src={book1} onClick={() => bookdetails(book[item].BookOwned.id)} />
                                     <p className={styleCSS.ownedbooktitle}>{book[item].BookOwned.title}</p>
                                     <p className={styleCSS.ownedbookauthor}>{book[item].BookOwned.author}</p>
                                 </div>

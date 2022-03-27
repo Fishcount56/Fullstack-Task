@@ -84,3 +84,13 @@ p.aboutthisbook{
     list-style: 27px;
     text-align: justify;
 }
+
+.bookbuttons{
+    float: right;
+    margin-right: 130px;
+    margin-bottom: 50px;
+}
+
+.bookbuttons button{
+    margin-left: 25px;
+}
