@@ -8,7 +8,7 @@ import logout1 from '../../../assets/logout1.png'
 import styleModule from './subnav.module.css'
 import { UserContext } from "../../../context/userContext";
 import { useNavigate } from "react-router-dom";
-import defaultuser from "../../../assets/user.png"
+import user from "../../../assets/user.png"
 import { API } from "../../../config/api";
 
 const SubNav = () => {
@@ -49,7 +49,7 @@ const SubNav = () => {
                         <img onClick={backtohome} src={iconsm} />
                     </div>
                     <div className={styleModule.displayprofile}>
-                        <img src={profile?.userPhoto ? profile?.userPhoto : defaultuser} />
+                        <img src={profile?.userPhoto ? profile?.userPhoto : {user}} />
                         <p className={styleModule.username}>{state.user.name}</p>
                         <p className={styleModule.usernot}>Subscribed</p>
                     </div>

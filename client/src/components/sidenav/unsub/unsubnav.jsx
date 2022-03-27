@@ -8,7 +8,7 @@ import logout1 from '../../../assets/logout1.png'
 import cssModule from'./unsubnav.module.css'
 import { UserContext } from "../../../context/userContext";
 import { useNavigate } from "react-router-dom";
-import defaultuser from "../../../assets/user.png"
+import userPhoto from "../../../assets/user.png"
 import { API } from "../../../config/api";
 
 const UnSubNav = () => {
@@ -25,6 +25,9 @@ const UnSubNav = () => {
         }
     }
 
+    const backtohome = () => {
+        navigate('/dashboard')
+    }
 
     const logout = () => {
         dispatch({
@@ -42,10 +45,10 @@ const UnSubNav = () => {
             <div className="unsub-content-parent">
                 <div className={cssModule.contentchild}>
                     <div className={cssModule.navicon}>
-                        <img src={iconsm} />
+                        <img onClick={() => backtohome()} src={iconsm} />
                     </div>
                     <div className={cssModule.displayprofile}>
-                        <img src={profile?.userPhoto ? profile?.userPhoto : defaultuser} />
+                        <img src={profile.userPhoto ? profile.userPhoto : userPhoto} />
                         <p className={cssModule.username}>{state.user.name}</p>
                         <p className={cssModule.usernot}>Not Subscribe Yet</p>
                     </div>

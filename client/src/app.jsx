@@ -6,13 +6,13 @@ import { UserContext } from './context/userContext'
 import { API, setAuthToken } from './config/api'
 
 
-import PrivateRoute from "./private/privateroute";
 import HomePage from "./components/homepage";
 import AdminPage from "./components/adminpage";
 import AddBookAdmin from "./components/admin/addbook";
 import SubsPage from "./components/subs/subscribe";
 import UserProfile from "./components/profile/userprofile";
 import EditProfile from "./components/profile/editprofile";
+import ViewBook from "./components/book/viewbook";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token)
@@ -62,13 +62,14 @@ const App = () => {
     return(
           <Routes>
               <Route exact path='/' element={<LandingPage />}/>
-              <Route exact path='/landingpage' element={<LandingPage />}/>
-              <Route exact path='/dashboard' element={<HomePage />}/>
-              <Route exact path='/administrator' element={<AdminPage />}/>
-              <Route exact path='/addbook' element={<AddBookAdmin />}/>
-              <Route exact path='/subspage' element={<SubsPage />}/>
-              <Route exact path='/profile' element={<UserProfile />}/>
-              <Route exact path='/edit-profile' element={<EditProfile />}/>
+              <Route path='/landingpage' element={<LandingPage />}/>
+              <Route path='/dashboard' element={<HomePage />}/>
+              <Route path='/administrator' element={<AdminPage />}/>
+              <Route path='/addbook' element={<AddBookAdmin />}/>
+              <Route path='/subspage' element={<SubsPage />}/>
+              <Route path='/profile' element={<UserProfile />}/>
+              <Route path='/edit-profile' element={<EditProfile />}/>
+              <Route path='/bookinformation/:bid' element={<ViewBook />}/>
           </Routes>
 
     )

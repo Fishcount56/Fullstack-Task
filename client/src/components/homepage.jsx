@@ -5,6 +5,7 @@ import UnSubContent from "./content/unsub/unsub";
 import './homepage.css'
 import { UserContext } from "../context/userContext";
 import { API } from "../config/api";
+import SubContent from "./content/sub/sub";
 
 const HomePage = () => {
     const isSubs = false
@@ -28,7 +29,7 @@ const HomePage = () => {
                 {status == "Approve" ? <SubNav /> : <UnSubNav />}
             </div>
             <div className="page-content">
-                <UnSubContent />
+                {status == "Approve" ? <SubContent /> : <UnSubContent />}
             </div>
         </div>
     )

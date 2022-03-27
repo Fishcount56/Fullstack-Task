@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Component } from "react";
+import React, { useEffect, useState } from "react";
 import styleCSS from "./sub.module.css"
 import book5 from "../../../assets/book5.png"
 import book1 from "../../../assets/book1.png"
@@ -9,11 +9,17 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import { Modal } from "react-bootstrap";
 import { API } from "../../../config/api";
+import { useNavigate } from "react-router-dom";
 
 const SubContent = () => {
     const [showNotification, setshowNotification] = useState(false)
     const closeNotification = () => {
         setshowNotification(!showNotification)
+    }
+
+    const navigate = useNavigate()
+    const bookdetails = (bid) => {
+        navigate('/bookinformation/' + bid)
     }
 
     const [book, setBook] = useState([])
@@ -44,8 +50,8 @@ const SubContent = () => {
                 <h1>List Book</h1>
                 <div className={styleCSS.bookList}>
                     {book.map((item, index) => (
-                        <div className={styleCSS.bookSection}>
-                            <img src={book1} />
+                        <div className={styleCSS.bookSection} key={index}>
+                            <img src={book1} onClick={() => bookdetails(item.id)}  />
                             <p className={styleCSS.bookTitle}>{item.title}</p>
                             <p className={styleCSS.bookAuthor}>{item.author}</p>
                         </div>
