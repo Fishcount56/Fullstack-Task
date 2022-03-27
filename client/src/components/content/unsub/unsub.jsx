@@ -30,8 +30,6 @@ const UnSubContent = () => {
     useEffect(() => {
         getBook()
     }, [])
-
-    console.log(book)
     return (
         <div>
             <div className={styleCSS.firstSection}>

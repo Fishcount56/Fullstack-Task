@@ -12,11 +12,6 @@ import { API } from "../../../config/api";
 import { useNavigate } from "react-router-dom";
 
 const SubContent = () => {
-    const [showNotification, setshowNotification] = useState(false)
-    const closeNotification = () => {
-        setshowNotification(!showNotification)
-    }
-
     const navigate = useNavigate()
     const bookdetails = (bid) => {
         navigate('/bookinformation/' + bid)
@@ -58,17 +53,6 @@ const SubContent = () => {
                     ))}
                 </div>
             </div>
-                <Modal
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                    show={showNotification}
-                    onHide={closeNotification}
-                    >
-                    <Modal.Body>
-                        <p className={styleCSS.notificationBody}>please make a payment to read the latest books</p>                    
-                    </Modal.Body>
-                </Modal>
         </div>
     )
 }

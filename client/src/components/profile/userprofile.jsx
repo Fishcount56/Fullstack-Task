@@ -12,6 +12,7 @@ import call from "../../assets/call.png"
 import maps from "../../assets/maps.png"
 import userdefault from "../../assets/user.png"
 import { useNavigate } from "react-router-dom";
+import book1 from "../../assets/book1.png"
 
 
 const UserProfile = () => {
@@ -42,11 +43,25 @@ const UserProfile = () => {
         }
     }
 
+    // Get user booklist
+    const [userBook, setUserBook] = useState({})
+    const getBookList = async(id) => {
+        try {
+            const response = await API.get('/booklists')
+            setUserBook(response.data.Data.UserBooksList)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
     useEffect(() => {
         checkPaymentStatus(id)
         getProfile(id)
+        getBookList()
     }, [])
-    console.log(profile)
+    console.log(userBook)
+
     return (
             <div className={styleCSS.profilecontent}>
                 <div className={styleCSS.sidenav}>
@@ -92,6 +107,8 @@ const UserProfile = () => {
                     </div>
                     <div className={styleCSS.userbooks}>
                         <h3>My Book List</h3>
+                        <div className={styleCSS.bookList}>
+                        </div>
                     </div>
                 </div>
             </div>
