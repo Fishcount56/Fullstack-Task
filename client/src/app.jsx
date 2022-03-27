@@ -69,7 +69,7 @@ const App = () => {
               <Route path='/subspage' element={<SubsPage />}/>
               <Route path='/profile' element={<UserProfile />}/>
               <Route path='/edit-profile' element={<EditProfile />}/>
-              <Route path='/bookinformation/:bid' element={<ViewBook />}/>
+              <Route path='/bookinformation/:bid' element={<ViewBook />}/>              
           </Routes>
 
     )

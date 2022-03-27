@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { API } from "../../config/api";
 import { UserContext } from "../../context/userContext"
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -13,6 +13,7 @@ import maps from "../../assets/maps.png"
 import userdefault from "../../assets/user.png"
 import { useNavigate } from "react-router-dom";
 import book1 from "../../assets/book1.png"
+import UserBook from "../userbook/userbook";
 
 
 const UserProfile = () => {
@@ -20,7 +21,12 @@ const UserProfile = () => {
     const gotoedit = () => {
         navigate('/edit-profile')
     }
-    const [state] = useContext(UserContext)
+
+    const bookdetails = (bid) => {
+        navigate('/bookinformation/' + bid)
+    }
+
+    const [state, dispatch] = useContext(UserContext)
     const [status, setStatus] = useState({})
     let id = state.user.id
     const checkPaymentStatus = async(id) => {
@@ -44,11 +50,11 @@ const UserProfile = () => {
     }
 
     // Get user booklist
-    const [userBook, setUserBook] = useState({})
-    const getBookList = async(id) => {
+    const [book, setBook] = useState({})
+    const getBookList = async() => {
         try {
             const response = await API.get('/booklists')
-            setUserBook(response.data.Data.UserBooksList)
+            setBook(response.data.UserBooksList)
         } catch (error) {
             console.log(error)
         }
@@ -58,10 +64,13 @@ const UserProfile = () => {
     useEffect(() => {
         checkPaymentStatus(id)
         getProfile(id)
+    }, [])
+
+    useEffect(() => {
         getBookList()
     }, [])
-    console.log(userBook)
 
+    console.log(book)
     return (
             <div className={styleCSS.profilecontent}>
                 <div className={styleCSS.sidenav}>
@@ -108,6 +117,13 @@ const UserProfile = () => {
                     <div className={styleCSS.userbooks}>
                         <h3>My Book List</h3>
                         <div className={styleCSS.bookList}>
+                            {Object.keys(book).map((item, index) => (
+                                <div className={styleCSS.userbooksection} key={index}>
+                                    <img src={book1} onClick={() => bookdetails(book[item].id)} />
+                                    <p className={styleCSS.ownedbooktitle}>{book[item].BookOwned.title}</p>
+                                    <p className={styleCSS.ownedbookauthor}>{book[item].BookOwned.author}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>

@@ -89,22 +89,22 @@
     width: 100%;
 }
 
-.bookSection{
+.userbooksection{
     width: 23%;
     margin-right: 20px;
     margin-bottom: 20px; 
 }
 
-.bookSection img{
+.userbooksection img{
     margin-bottom: 20px;
     cursor: pointer;
 }
 
-.bookSection .bookTitle{
+.ownedbooktitle{
     font-size: 24px;
     font-weight: bold;
 }
 
-.bookSection .bookAuthor{
+.ownedbookauthor{
     color: rgba(146, 146, 146, 1);
 }

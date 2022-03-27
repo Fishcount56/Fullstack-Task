@@ -83,9 +83,7 @@ exports.UserBookList = async(req, res) => {
         // console.log(UserBooksList)
         res.send({
             status: "Success",
-            Data: {
-                UserBooksList
-            }
+            UserBooksList
         })
     } catch (error) {
         console.log(error)
