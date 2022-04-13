@@ -46,7 +46,7 @@ const SubContent = () => {
                 <div className={styleCSS.bookList}>
                     {book.map((item, index) => (
                         <div className={styleCSS.bookSection} key={index}>
-                            <img src={book1} onClick={() => bookdetails(item.id)}  />
+                            <img src={item.bookCover} onClick={() => bookdetails(item.id)} classN/>
                             <p className={styleCSS.bookTitle}>{item.title}</p>
                             <p className={styleCSS.bookAuthor}>{item.author}</p>
                         </div>

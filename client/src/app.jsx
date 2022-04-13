@@ -27,9 +27,9 @@ const App = () => {
         navigate("/landingpage")
       } else {
         if (state.user.role == "admin") {
-          navigate("/administrator");
+          navigate("/administrator")
         } else if (state.user.role == "user") {
-          navigate("/dashboard");
+          navigate("/dashboard")
         }
       }
     }, [state])

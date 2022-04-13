@@ -30,6 +30,8 @@ const UnSubContent = () => {
     useEffect(() => {
         getBook()
     }, [])
+
+    console.log(book)
     return (
         <div>
             <div className={styleCSS.firstSection}>
@@ -44,7 +46,7 @@ const UnSubContent = () => {
                 <h1>List Book</h1>
                 <div className={styleCSS.bookList}>
                     {book.map((item, index) => (
-                        <div className={styleCSS.bookSection}>
+                        <div className={styleCSS.bookSection} key={index}>
                             <img onClick={() => setshowNotification(!showNotification)} src={book1} />
                             <p className={styleCSS.bookTitle}>{item.title}</p>
                             <p className={styleCSS.bookAuthor}>{item.author}</p>

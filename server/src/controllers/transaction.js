@@ -69,7 +69,6 @@ exports.getTransaction = async (req, res) => {
         })
 
         Transaction = JSON.parse(JSON.stringify(Transaction));
-        console.log(Transaction)
         Transaction = {
                 ...Transaction, 
                 transferProof : process.env.PATH_FILE_TRANSACTION + Transaction.transferProof

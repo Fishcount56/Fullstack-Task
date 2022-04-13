@@ -57,6 +57,8 @@ const ViewBook = () => {
         checkPaymentStatus(uid)
         getBook(bid)
     }, [])
+
+    console.log(dataBook)
     return (
         <div className={styleCSS.viewbookcontent}>
             <div className={styleCSS.sidenav}>
@@ -65,7 +67,7 @@ const ViewBook = () => {
             <div className={styleCSS.bookcontent}>
                 <div className={styleCSS.firstbooksection}>
                     <div className={styleCSS.bookcoverimage}>
-                        <img src={coverbig} />
+                        <img src={dataBook?.bookCover} />
                     </div>
                     <div className={styleCSS.bookinformation} >
                         <p className={styleCSS.booktitle}>{dataBook?.title}</p>

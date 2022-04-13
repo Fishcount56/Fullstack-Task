@@ -30,6 +30,8 @@ exports.getBooks = async (req, res) => {
             },
             raw: true,
         })
+
+        Book.map((item) => item.bookCover = process.env.PATH_FILE_BOOK + item.bookCover)
         res.send({
             status: "Success",
             Book
@@ -68,8 +70,11 @@ exports.addBook = async (req, res) => {
 
         const newBook = await book.create({
             ...data,
-            bookFile: req.file.filename
+            bookFile: req.files.bookFile[0].filename,
+            bookCover: req.files.bookCover[0].filename
         })
+        newBook.bookFile = newBook.bookFile.filename
+        newBook.bookCover = newBook.bookCover.filename
         // console.log(newBook)
         let bookData = await book.findOne({
             where: {
@@ -113,6 +118,7 @@ exports.getBook = async (req, res) => {
             }
         })
         Book.bookFile = process.env.PATH_FILE_BOOK + Book.bookFile
+        Book.bookCover = process.env.PATH_FILE_BOOK + Book.bookCover
         res.send({
             status: "Success",
             Book

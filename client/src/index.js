@@ -10,15 +10,13 @@ import { BrowserRouter as Router } from "react-router-dom";
 const client = new QueryClient();
 
 ReactDOM.render(
-  <React.StrictMode>
     <UserContextProvider>
       <QueryClientProvider client={client}>
         <Router>
           <App />
         </Router>
       </QueryClientProvider>
-    </UserContextProvider>
-  </React.StrictMode>,
+    </UserContextProvider>,
   document.getElementById('root')
 );
 

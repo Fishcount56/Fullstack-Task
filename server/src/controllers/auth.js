@@ -137,8 +137,6 @@ exports.checkAuth = async (req, res) => {
           exclude: ["createdAt", "updatedAt", "password"],
         },
       });
-      
-      console.log(dataUser)
 
       if (!dataUser) {
         return res.status(404).send({
