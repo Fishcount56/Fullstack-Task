@@ -38,7 +38,21 @@ const SubNav = () => {
     }
 
     useEffect(() => {
+        let isMount = false
+        const getProfile = async (id) => {
+            try {
+                const response = await API.get('/profile')
+                if(!isMount){
+                    setProfile(response.data.data.Profile)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
         getProfile(id)
+        return () => {
+            isMount = true
+        }
     }, [])
 
     return (

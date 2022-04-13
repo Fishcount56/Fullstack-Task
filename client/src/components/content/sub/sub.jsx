@@ -19,17 +19,22 @@ const SubContent = () => {
 
     const [book, setBook] = useState([])
 
-    const getBook = async() => {
-        try {
-            const response = await API.get('/books')
-            setBook(response.data.Book)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     useEffect(() => {
+        let isMount = false
+        const getBook = async() => {
+            try {
+                const response = await API.get('/books')
+                if (!isMount){
+                    setBook(response.data.Book)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
         getBook()
+        return () => {
+            isMount = true
+        }
     }, [])
     return (
         <div>
@@ -46,7 +51,7 @@ const SubContent = () => {
                 <div className={styleCSS.bookList}>
                     {book.map((item, index) => (
                         <div className={styleCSS.bookSection} key={index}>
-                            <img src={item.bookCover} onClick={() => bookdetails(item.id)} classN/>
+                            <img src={item.bookCover} onClick={() => bookdetails(item.id)}/>
                             <p className={styleCSS.bookTitle}>{item.title}</p>
                             <p className={styleCSS.bookAuthor}>{item.author}</p>
                         </div>

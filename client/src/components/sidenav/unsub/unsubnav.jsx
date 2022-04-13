@@ -16,14 +16,7 @@ const UnSubNav = () => {
     const navigate = useNavigate()
     const [profile, setProfile] = useState({})
     let id = state.user.id
-    const getProfile = async (id) => {
-        try {
-            const response = await API.get('/profile')
-            setProfile(response.data.data.Profile)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    
 
     const backtohome = () => {
         navigate('/dashboard')
@@ -36,9 +29,31 @@ const UnSubNav = () => {
         navigate("/");
     };
 
+    // const getProfile = async (id) => {
+    //     try {
+    //         const response = await API.get('/profile')
+    //         setProfile(response.data.data.Profile)
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
     useEffect(() => {
+        let isUnmount = false
+        const getProfile = async (id) => {
+            try {
+                const response = await API.get('/profile')
+                if(!isUnmount) {
+                    setProfile(response.data.data.Profile)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
         getProfile(id)
+        return () => {
+            isUnmount = true
+        }
     }, [])
     return(
         <nav>
@@ -47,11 +62,13 @@ const UnSubNav = () => {
                     <div className={cssModule.navicon}>
                         <img onClick={() => backtohome()} src={iconsm} />
                     </div>
-                    <div className={cssModule.displayprofile}>
-                        <img src={profile.userPhoto ? profile.userPhoto : userPhoto} />
-                        <p className={cssModule.username}>{state.user.name}</p>
-                        <p className={cssModule.usernot}>Not Subscribe Yet</p>
-                    </div>
+                    {profile && (
+                        <div className={cssModule.displayprofile}>
+                            <img src={profile.userPhoto ? profile.userPhoto : userPhoto} alt='userPhoto'/>
+                            <p className={cssModule.username}>{state.user.name}</p>
+                            <p className={cssModule.usernot}>Not Subscribe Yet</p>
+                        </div>
+                    )}
                         <hr />
                         <ul>
                             <li>

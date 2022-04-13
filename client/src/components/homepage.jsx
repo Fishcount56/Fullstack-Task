@@ -8,28 +8,34 @@ import { API } from "../config/api";
 import SubContent from "./content/sub/sub";
 
 const HomePage = () => {
-    const isSubs = false
     const [state, dispatch] = useContext(UserContext)
     let id = state.user.id
     const [status, setStatus] = useState({})
-    const checkPaymentStatus = async(id) => {
-        try {
-            const response = await API.get('/transaction')
-            setStatus(response.data.Transaction.Transaction.paymentStatus)
-        } catch (error) {
-            console.log(error)
-        }
-    } 
+    
     useEffect(() => {
-        checkPaymentStatus(id);
+        let isUnmount = false
+        const checkPaymentStatus = async(id) => {
+            try {
+                const response = await API.get('/transaction')
+                if(!isUnmount) {
+                    setStatus(response.data.Transaction.Transaction)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        } 
+        checkPaymentStatus(id)
+        return () => {
+            isUnmount = true
+        }
       }, []);
     return (
         <div className="homepage-content">
             <div className="side-nav">
-                {status == "Approve" ? <SubNav /> : <UnSubNav />}
+                {status.paymentStatus == "Approve" ? <SubNav /> : <UnSubNav />}
             </div>
             <div className="page-content">
-                {status == "Approve" ? <SubContent /> : <UnSubContent />}
+                {status.paymentStatus == "Approve" ? <SubContent /> : <UnSubContent />}
             </div>
         </div>
     )

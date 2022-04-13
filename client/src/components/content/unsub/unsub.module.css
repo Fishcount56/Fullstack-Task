@@ -43,11 +43,15 @@
     width: 100%;
 }
 
+.bookList img{
+    width: 200px;
+    height: 270px;
+}
+
 .bookSection{
     width: 23%;
     margin-right: 20px;
     margin-bottom: 20px;
-    
 }
 
 .bookSection img{

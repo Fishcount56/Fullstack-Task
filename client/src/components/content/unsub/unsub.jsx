@@ -18,20 +18,23 @@ const UnSubContent = () => {
 
     const [book, setBook] = useState([])
 
-    const getBook = async() => {
-        try {
-            const response = await API.get('/books')
-            setBook(response.data.Book)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     useEffect(() => {
+        let isUnmount = false
+        const getBook = async() => {
+            try {
+                const response = await API.get('/books')
+                if(!isUnmount){
+                    setBook(response.data.Book)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
         getBook()
+        return () => {
+            isUnmount = true
+        }
     }, [])
-
-    console.log(book)
     return (
         <div>
             <div className={styleCSS.firstSection}>
@@ -47,7 +50,7 @@ const UnSubContent = () => {
                 <div className={styleCSS.bookList}>
                     {book.map((item, index) => (
                         <div className={styleCSS.bookSection} key={index}>
-                            <img onClick={() => setshowNotification(!showNotification)} src={book1} />
+                            <img onClick={() => setshowNotification(!showNotification)} src={item.bookCover} />
                             <p className={styleCSS.bookTitle}>{item.title}</p>
                             <p className={styleCSS.bookAuthor}>{item.author}</p>
                         </div>

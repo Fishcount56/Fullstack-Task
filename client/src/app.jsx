@@ -27,8 +27,10 @@ const App = () => {
         navigate("/landingpage")
       } else {
         if (state.user.role == "admin") {
+          setAuthToken(localStorage.token)
           navigate("/administrator")
         } else if (state.user.role == "user") {
+          setAuthToken(localStorage.token)
           navigate("/dashboard")
         }
       }

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import icon from "../assets/Icon.png"
 import './LandingPage.css'
 import { Modal,Form, InputGroup, Alert } from "react-bootstrap"
@@ -26,12 +26,15 @@ const LandingPage = () => {
     const [state, dispatch] = useContext(UserContext)
     const [message, setMessage] = useState(null);
     const [messega, setMessega] = useState(null)
-    const checkAuth = () => {
-        if (state.isLogin === true) {
-            navigate("/dashboard");
+    
+
+    useEffect(() => {
+        const checkAuth = () => {
+            if (state.isLogin === true) {
+                navigate("/dashboard");
+            }
         }
-    }
-    checkAuth()
+    })
 
     // Start Register
     const [formRegister, setFormRegister] = useState({
@@ -135,6 +138,12 @@ const LandingPage = () => {
             }
         } catch (error) {
             console.log(error)
+            const alert = (
+                <Alert variant="danger" className="py-1">
+                  Email or password is wrong
+                </Alert>
+              );
+              setMessage(alert);
         }
     }
     // End Login
@@ -202,7 +211,7 @@ const LandingPage = () => {
                         Sign In
                     </Modal.Title>                    
                 </Modal.Header>
-                {/* {messega && messega} */}
+                {message && message}
                 <Modal.Body>
                     <Form onSubmit={handleLoginSubmit}>
                     <InputGroup className="mb-3">

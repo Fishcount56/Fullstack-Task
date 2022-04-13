@@ -1,6 +1,12 @@
+.addbookContent {
+    background-color: #F2F2F2;
+    height: 100%;
+    padding-bottom: 100px;
+}
+
 .addbookparents{
     background-color: #F2F2F2;
-    height: 60vw;
+    height: 100%;
 }
 
 .contentaddform{

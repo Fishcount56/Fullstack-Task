@@ -11,18 +11,28 @@ export default function TransactionTable()  {
     // declare transaction with useState
     const [transactions, setTransactions] = useState([])
 
+    let isMounted = false
+
     // get transactions data from database
     const getTransactions = async () => {
         try {
             const response = await API.get('/transactions')
-            setTransactions(response.data.transactions)
+            if(!isMounted){
+                setTransactions(response.data.transactions)
+            }
         } catch (error) {
             console.log(error)
         }
     }
 
     useEffect(() => {
-        getTransactions()
+        
+        if(!isMounted){
+            getTransactions()
+        }
+        return () => {
+            isMounted = true
+        }
     }, [])
 
     // Update Transaction
@@ -53,16 +63,6 @@ export default function TransactionTable()  {
         setConfirmUpdate(null)
     }, [confirmUpdate])
 
-
-    const activeStyle = {
-        color: "green",
-        textAlign: "center"
-      };
-
-    const notactiveStyle = {
-        color: "red",
-        textAlign: "center"
-      };
     return (
         <>
         <div className={styleCSS.tableparent}>
