@@ -4,7 +4,7 @@ const { user, userprofile } = require('../../models')
 
 exports.userProfile = async(req, res) => {
     try {
-        const Profile = await userprofile.findOne({
+        let Profile = await userprofile.findOne({
             where: {
                 idUser : req.user.id
             },
@@ -12,7 +12,11 @@ exports.userProfile = async(req, res) => {
                 exclude: ['id','createdAt','updatedAt']
             }
         })
-        Profile.userPhoto = process.env.PATH_FILE_USER + Profile.userPhoto
+        Profile = JSON.parse(JSON.stringify(Profile));
+        Profile = {
+            ...Profile,
+            userPhoto: Profile.userPhoto ? process.env.PATH_FILE_USER + Profile.userPhoto : null
+        }
         res.send({
             status: "Success",
             data : {
@@ -20,6 +24,7 @@ exports.userProfile = async(req, res) => {
             }
         })
     } catch (error) {
+        console.log(error)
         res.send({
             status: "Error"
         })

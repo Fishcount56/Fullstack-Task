@@ -8,7 +8,7 @@ import logout1 from '../../../assets/logout1.png'
 import styleModule from './subnav.module.css'
 import { UserContext } from "../../../context/userContext";
 import { useNavigate } from "react-router-dom";
-import user from "../../../assets/user.png"
+import userDefault from "../../../assets/user.png"
 import { API } from "../../../config/api";
 
 const SubNav = () => {
@@ -26,7 +26,7 @@ const SubNav = () => {
         navigate('/dashboard')
     }
 
-    const [profile, setProfile] = useState({})
+    const [profile, setProfile] = useState([])
     let id = state.user.id
     const getProfile = async (id) => {
         try {
@@ -54,7 +54,6 @@ const SubNav = () => {
             isMount = true
         }
     }, [])
-
     return (
         <nav>
             <div className="unsub-content-parent">
@@ -62,11 +61,13 @@ const SubNav = () => {
                     <div className={styleModule.navicon}>
                         <img onClick={backtohome} src={iconsm} />
                     </div>
+                    {(profile && state) ? 
                     <div className={styleModule.displayprofile}>
-                        <img src={profile?.userPhoto ? profile?.userPhoto : {user}} />
+                        <img src={profile?.userPhoto ? profile.userPhoto : userDefault} alt="User-Image" />
                         <p className={styleModule.username}>{state.user.name}</p>
                         <p className={styleModule.usernot}>Subscribed</p>
                     </div>
+                    : <div>Loading...</div>}
                         <hr />
                         <ul>
                             <li>

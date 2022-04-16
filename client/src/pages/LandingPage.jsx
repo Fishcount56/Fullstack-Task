@@ -122,7 +122,6 @@ const LandingPage = () => {
 
             const bodylogin = JSON.stringify(formLogin)
             const response = await API.post('/login', bodylogin, configlogin)
-            console.log(response)
             if (response?.status == 200) {
                 // Send data to useContext
                 dispatch({
@@ -143,7 +142,7 @@ const LandingPage = () => {
                   Email or password is wrong
                 </Alert>
               );
-              setMessage(alert);
+              setMessega(alert);
         }
     }
     // End Login
@@ -211,7 +210,7 @@ const LandingPage = () => {
                         Sign In
                     </Modal.Title>                    
                 </Modal.Header>
-                {message && message}
+                {messega && messega}
                 <Modal.Body>
                     <Form onSubmit={handleLoginSubmit}>
                     <InputGroup className="mb-3">

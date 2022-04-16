@@ -10,7 +10,7 @@ import envelope from "../../assets/envelope.png"
 import intersex from "../../assets/intersex.png"
 import call from "../../assets/call.png"
 import maps from "../../assets/maps.png"
-import userdefault from "../../assets/user.png"
+import userDefault from "../../assets/user.png"
 import { useNavigate } from "react-router-dom";
 import book1 from "../../assets/book1.png"
 
@@ -69,7 +69,6 @@ const UserProfile = () => {
         getBookList()
     }, [])
 
-    console.log(book)
     return (
             <div className={styleCSS.profilecontent}>
                 <div className={styleCSS.sidenav}>
@@ -109,7 +108,7 @@ const UserProfile = () => {
                             </div>
                         </div>
                         <div className={styleCSS.userphoto}>
-                            <img src={profile?.userPhoto ? profile?.userPhoto : userdefault} alt="userdefault" />
+                        <img src={profile?.userPhoto ? profile.userPhoto : userDefault} alt="User-Image" />
                             <button className="btn btn-danger" onClick={gotoedit}>Edit Profile</button>
                         </div>
                     </div>

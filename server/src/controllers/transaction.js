@@ -1,5 +1,5 @@
 const { transaction, user } = require('../../models')
-const { Sequelize, sequelize } = require('../../models') 
+const { Op } = require("sequelize");
 
 exports.addTransaction = async (req, res) => {
     try {
@@ -153,3 +153,4 @@ exports.editTransaction = async (req, res) =>{
         })
     }
 }
+

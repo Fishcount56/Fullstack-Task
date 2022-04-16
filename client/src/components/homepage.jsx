@@ -29,13 +29,14 @@ const HomePage = () => {
             isUnmount = true
         }
       }, []);
+
     return (
         <div className="homepage-content">
             <div className="side-nav">
-                {status.paymentStatus == "Approve" ? <SubNav /> : <UnSubNav />}
+                {status && status.paymentStatus == "Approve" ? <SubNav /> : <UnSubNav />}
             </div>
             <div className="page-content">
-                {status.paymentStatus == "Approve" ? <SubContent /> : <UnSubContent />}
+                {status && status.paymentStatus == "Approve" ? <SubContent /> : <UnSubContent />}
             </div>
         </div>
     )
