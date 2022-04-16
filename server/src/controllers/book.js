@@ -75,7 +75,6 @@ exports.addBook = async (req, res) => {
         })
         newBook.bookFile = newBook.bookFile.filename
         newBook.bookCover = newBook.bookCover.filename
-        // console.log(newBook)
         let bookData = await book.findOne({
             where: {
                 id: newBook.id
@@ -207,6 +206,26 @@ exports.deleteBook = async (req, res) => {
         res.send({
             status: "Failed",
             Message: "Server Error"
+        })
+    }
+}
+
+exports.getBookWithLimit = async(req,res) => {
+    try {
+        const limitedBook = await book.findAll({
+            order: sequelize.random(),
+            limit: 2
+        })
+        res.status(200).send({
+            status: 'Success',
+            data: {
+                limitedBook
+            }
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(400).send({
+            status: 'Failed'
         })
     }
 }

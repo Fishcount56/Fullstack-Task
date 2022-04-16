@@ -19,7 +19,7 @@ const ReadBook = () => {
             ...ReactReaderStyle.tocArea,
             height: '90%',
             marginLeft: '5%',
-            marginTop: '7.7%',
+            marginTop: '8.6%',
           }
       }
 

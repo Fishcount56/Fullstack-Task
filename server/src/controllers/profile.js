@@ -8,6 +8,15 @@ exports.userProfile = async(req, res) => {
             where: {
                 idUser : req.user.id
             },
+            include: [
+                {
+                    model: user,
+                    as: "ProfileUser",
+                    attributes: {
+                        exclude:['email','password','role','createdAt','updatedAt']
+                    }
+                }
+            ],
             attributes: {
                 exclude: ['id','createdAt','updatedAt']
             }

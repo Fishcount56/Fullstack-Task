@@ -17,6 +17,9 @@ const UnSubNav = () => {
     const [profile, setProfile] = useState()
     let id = state.user.id
 
+    const [pName, setpName] = useState(null)
+    
+    
     const backtohome = () => {
         navigate('/dashboard')
     }
@@ -42,12 +45,17 @@ const UnSubNav = () => {
             }
         }
         getProfile(id)
+
+        const changeName = () => {
+            setpName(profile?.ProfileUser.fullname)
+        }
+        
+        changeName()
         return () => {
             isUnmount = true
         }
-
+        
     }, [])
-    console.log(profile)
     return(
         <nav>
             <div className="unsub-content-parent">
@@ -57,7 +65,7 @@ const UnSubNav = () => {
                     </div>
                         <div className={cssModule.displayprofile}>
                             <img src={profile?.userPhoto ? profile.userPhoto : userDefault} alt="User-Image" />                        
-                            <p className={cssModule.username}>{state.user.name}</p>
+                            {profile?.ProfileUser.fullname && <p className={cssModule.username}>{profile?.ProfileUser.fullname}</p>}
                             <p className={cssModule.usernot}>Not Subscribe Yet</p>
                         </div>
                         <hr />

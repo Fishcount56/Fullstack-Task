@@ -154,3 +154,35 @@ exports.editTransaction = async (req, res) =>{
     }
 }
 
+exports.transactionDailyUpdate = async(req, res) => {
+    try {
+        let dailyUpdate = await transaction.findAll({
+            where: {
+                remainActive : {[Op.gte] : 1}
+            }
+        })
+        dailyUpdate = JSON.parse(JSON.stringify(dailyUpdate))
+        console.log(dailyUpdate)
+        res.status(200).send({
+            status: 'Success',
+            data: {
+                dailyUpdate
+            }
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(400).send({
+            status: 'Failed'
+        })
+    }
+}
+
+exports.updateDaily = async(req, res) => {
+    const updateDaily = await transaction.decrement({
+        remainActive: 1
+    }, 
+        {  where: {
+            remainActive : {[Op.gte] : 1}
+        }
+    })
+}

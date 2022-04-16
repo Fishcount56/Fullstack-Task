@@ -55,6 +55,7 @@
 }
 
 .bookSection img{
+    border-radius: 8px;
     margin-bottom: 20px;
     cursor: pointer;
 }
@@ -62,6 +63,13 @@
 .bookSection .bookTitle{
     font-size: 24px;
     font-weight: bold;
+}
+
+.bookTitle{
+    white-space: nowrap; 
+    width: 87%; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 
 .bookSection .bookAuthor{
