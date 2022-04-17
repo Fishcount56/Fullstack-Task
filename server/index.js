@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const cron = require('node-cron')
 const app = express()
-const port = 5000
+const port = process.env.PORT || 5000
 const router = require('./src/routes')
 const cors = require('cors')
 app.use(express.json())
