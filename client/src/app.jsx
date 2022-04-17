@@ -14,6 +14,7 @@ import UserProfile from "./components/profile/userprofile";
 import EditProfile from "./components/profile/editprofile";
 import ViewBook from "./components/book/viewbook";
 import ReadBook from "./components/readbook/readbook";
+import AllBookPage from "./pages/Allbook/allbook";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token)
@@ -74,6 +75,7 @@ const App = () => {
               <Route path='/edit-profile' element={<EditProfile />}/>
               <Route path='/bookinformation/:bid' element={<ViewBook />}/>              
               <Route path='/readbook/:bid' element={<ReadBook />}/>              
+              <Route path='/allbook' element={<AllBookPage />}/>              
           </Routes>
 
     )

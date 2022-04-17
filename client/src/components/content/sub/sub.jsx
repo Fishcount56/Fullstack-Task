@@ -47,7 +47,10 @@ const SubContent = () => {
                 </div>
             </div>
             <div className={styleCSS.secondSection}>
-                <h1>List Book</h1>
+                <div className={styleCSS.sectionHeader}>
+                    <h1>List Book</h1>
+                    <p className={styleCSS.moreBookButton} onClick={() => navigate('/allbook')}>More Book</p>
+                </div>
                 <div className={styleCSS.bookList}>
                     {book.map((item, index) => (
                         <div className={styleCSS.bookSection} key={index}>

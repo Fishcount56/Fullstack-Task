@@ -53,7 +53,7 @@ router.post('/booklist/:id', auth, addBookList)
 router.patch('/updateDaily', updateDaily)
 
 
-const updateSchedule = new cron.schedule('0 0 0 * *', () => {
+const updateSchedule = new cron.schedule('0 0 0 * * *', () => {
     updateDaily()
 })
 updateSchedule.start()

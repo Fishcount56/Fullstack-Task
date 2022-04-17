@@ -64,6 +64,13 @@
     font-weight: bold;
 }
 
+.bookTitle{
+    white-space: nowrap; 
+    width: 87%; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
 .bookSection .bookAuthor{
     color: rgba(146, 146, 146, 1);
 }
