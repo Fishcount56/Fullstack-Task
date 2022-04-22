@@ -34,12 +34,12 @@ const AllBookSub = () => {
 
     const [pageNumber, setPageNumber] = useState(0)
 
-    const bookShowPerPage = 2
+    const bookPerPage = 2
 
-    const pageNow = pageNumber * bookShowPerPage
+    const pageNow = bookPerPage * pageNumber
 
     const renderBook = book
-    .slice(pageNow, pageNow + bookShowPerPage)
+    .slice(pageNow, pageNow + bookPerPage)
     .map((item, index) => {
         return(
                 <div className={styleCSS.bookSection} key={index}>
@@ -49,13 +49,12 @@ const AllBookSub = () => {
                 </div>
         )
     })
-
-    const pageCount = Math.ceil(book.length / bookShowPerPage)
-
-    const changePage = ({ selected }) => {
-      setPageNumber(selected);
-    };
   
+    const PageCount = Math.ceil(book.length / bookPerPage)
+
+    const pageChange = ({ selected }) => {
+        setPageNumber(selected)
+    }
 
     return (
         <div>
@@ -63,15 +62,15 @@ const AllBookSub = () => {
             {renderBook}
             </div>
             <ReactPaginate
-                previousLabel={"Previous"}
-                nextLabel={"Next"}
-                pageCount={pageCount}
-                onPageChange={changePage}
-                containerClassName={"paginationBttns"}
-                previousLinkClassName={"previousBttn"}
-                nextLinkClassName={"nextBttn"}
-                disabledClassName={"paginationDisabled"}
-                activeClassName={"paginationActive"}
+                previousLabel={'Previous'}
+                nextLabel={'Next'}
+                pageCount={PageCount}
+                onPageChange={pageChange}
+                containerClassName={styleCSS.paginationBtns}
+                previousLinkClassName={styleCSS.paginationPrevBtn}
+                nextLinkClassName={styleCSS.paginationNextBtn}
+                disabledLinkClassName={styleCSS.paginationDisabled}
+                activeClassName={styleCSS.paginationActive}
             />
         </div>
     )

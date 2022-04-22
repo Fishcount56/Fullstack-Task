@@ -78,8 +78,8 @@ exports.UserBookList = async(req, res) => {
                 }
             }]
         })
-        const UserBooksList = JSON.parse(JSON.stringify(UserBooks))
-        // console.log(UserBooksList)
+        let UserBooksList = JSON.parse(JSON.stringify(UserBooks))
+        Object.keys(UserBooksList).map((item) => UserBooksList[item].BookOwned.bookCover = process.env.PATH_FILE_BOOK + UserBooksList[item].BookOwned.bookCover)
         res.send({
             status: "Success",
             UserBooksList

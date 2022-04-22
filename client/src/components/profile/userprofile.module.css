@@ -96,6 +96,8 @@
 }
 
 .userbooksection img{
+    width: 200px;
+    height: 270px;
     margin-bottom: 20px;
     cursor: pointer;
 }

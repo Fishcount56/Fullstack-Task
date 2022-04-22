@@ -68,7 +68,6 @@ const UserProfile = () => {
     useEffect(() => {
         getBookList()
     }, [])
-
     return (
             <div className={styleCSS.profilecontent}>
                 <div className={styleCSS.sidenav}>
@@ -115,9 +114,9 @@ const UserProfile = () => {
                     <div className={styleCSS.userbooks}>
                         <h3>My Book List</h3>
                         <div className={styleCSS.bookList}>
-                            {Object.keys(book).map((item, index) => (
+                            {book && Object.keys(book).map((item, index) => (
                                 <div className={styleCSS.userbooksection} key={index}>
-                                    <img src={book1} onClick={() => bookdetails(book[item].BookOwned.id)} />
+                                    <img src={book[item].BookOwned.bookCover} onClick={() => bookdetails(book[item].BookOwned.id)} />
                                     <p className={styleCSS.ownedbooktitle}>{book[item].BookOwned.title}</p>
                                     <p className={styleCSS.ownedbookauthor}>{book[item].BookOwned.author}</p>
                                 </div>
