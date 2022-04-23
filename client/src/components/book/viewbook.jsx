@@ -21,7 +21,7 @@ const ViewBook = () => {
     const checkPaymentStatus = async(uid) => {
         try {
             const response = await API.get('/transaction')
-            setStatus(response.data.Transaction.Transaction.paymentStatus)
+            setStatus(response.data.Transaction)
         } catch (error) {
             console.log(error)
         }
@@ -57,12 +57,11 @@ const ViewBook = () => {
         checkPaymentStatus(uid)
         getBook(bid)
     }, [])
-
-    console.log(dataBook)
+    
     return (
         <div className={styleCSS.viewbookcontent}>
             <div className={styleCSS.sidenav}>
-                {status == "Approve" ? <SubNav /> : <UnSubNav />}
+                {status && status.paymentStatus == "Approve" ? <SubNav /> : <UnSubNav />}
             </div>
             <div className={styleCSS.bookcontent}>
                 <div className={styleCSS.firstbooksection}>

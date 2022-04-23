@@ -9,6 +9,8 @@ import SubNav from "../../components/sidenav/sub/subnav";
 import { UserContext } from "../../context/userContext";
 
 import AllBookSub from "../../components/allbook/sub/allbooksub";
+import AllBookUnSub from "../../components/allbook/unsub/allbookunsub";
+
 
 const AllBookPage = () => {
     const [state, dispatch] = useContext(UserContext)
@@ -22,7 +24,7 @@ const AllBookPage = () => {
             try {
                 const response = await API.get('/transaction')
                 if(!isUnmount) {
-                    setStatus(response.data.Transaction.Transaction)
+                    setStatus(response.data.Transaction)
                 }
             } catch (error) {
                 console.log(error)
@@ -40,7 +42,7 @@ const AllBookPage = () => {
                 {status && status.paymentStatus == "Approve" ? <SubNav /> : <UnSubNav />}
             </div>
             <div className={styleCSS.allBookRightContent}>
-                <AllBookSub />
+                <AllBookUnSub />
             </div>
           </div>
       )

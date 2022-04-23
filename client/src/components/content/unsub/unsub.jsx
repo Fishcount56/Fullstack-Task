@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Component } from "react";
+import React, { useEffect, useState } from "react";
 import styleCSS from "./unsub.module.css"
 import book5 from "../../../assets/book5.png"
 import book1 from "../../../assets/book1.png"
@@ -9,8 +9,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import { Modal } from "react-bootstrap";
 import { API } from "../../../config/api";
+import { useNavigate } from "react-router-dom";
 
 const UnSubContent = () => {
+    const navigate = useNavigate()
     const [showNotification, setshowNotification] = useState(false)
     const closeNotification = () => {
         setshowNotification(!showNotification)
@@ -46,7 +48,10 @@ const UnSubContent = () => {
                 </div>
             </div>
             <div className={styleCSS.secondSection}>
-                <h1>List Book</h1>
+                <div className={styleCSS.sectionHeader}>
+                    <h1>List Book</h1>
+                    <p className={styleCSS.moreBookButton} onClick={() => navigate('/allbook')}>More Book</p>
+                </div>
                 <div className={styleCSS.bookList}>
                     {book.map((item, index) => (
                         <div className={styleCSS.bookSection} key={index}>

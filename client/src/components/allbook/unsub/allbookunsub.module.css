@@ -1,0 +1,83 @@
+@import url('http://fonts.cdnfonts.com/css/badaboom-bb');
+
+.allBookContent {
+    height: 100vh;
+}
+
+.bookList{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.bookList img{
+    width: 200px;
+    height: 270px;
+}
+
+.bookSection{
+    width: 23%;
+    margin-right: 20px;
+    margin-bottom: 20px; 
+}
+
+.bookSection img{
+    border-radius: 8px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.bookSection .bookTitle{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.bookTitle{
+    white-space: nowrap; 
+    width: 87%; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.bookSection .bookAuthor{
+    color: rgba(146, 146, 146, 1);
+}
+
+.paginationBtns {
+    width: 80%;
+    height: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .paginationBtns a {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: black;
+    cursor: pointer;
+  }
+  
+  .paginationBtns a:hover {
+    color: white;
+    background-color: #fbc813;
+  }
+  
+  .paginationActive a {
+    color: white;
+    background-color: #fbc813;
+  }
+  
+  .paginationDisabled a {
+    color: grey;
+    background-color: grey;
+  }
+
+  p.notificationBody{
+    text-align: center;
+    color: red;
+    margin-top: 15px;
+    font-size: 24px;
+}

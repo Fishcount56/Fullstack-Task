@@ -18,7 +18,7 @@ const HomePage = () => {
             try {
                 const response = await API.get('/transaction')
                 if(!isUnmount) {
-                    setStatus(response.data.Transaction.Transaction)
+                    setStatus(response.data.Transaction)
                 }
             } catch (error) {
                 console.log(error)

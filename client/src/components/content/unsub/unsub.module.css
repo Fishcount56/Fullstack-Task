@@ -81,3 +81,23 @@ p.notificationBody{
     margin-top: 15px;
     font-size: 24px;
 }
+
+.sectionHeader {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+p.moreBookButton{
+    display: flex;
+    padding: 5px 25px;
+    background-color: #f74b45;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+}
+
+p.moreBookButton:hover {
+    opacity: 0.75;
+}
